@@ -22,7 +22,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    binding.pry
     @task.update(task_params)
     redirect_to task_path(@task)
   end

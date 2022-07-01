@@ -1,10 +1,22 @@
-<div class="mt-10">
 <h1>My Tasks</h1>
-  <% @tasks.each do |task| %>
-    <p><%= link_to "#{task.title}, Completed: #{task.completed}", task_path(task) %>
-      <%= link_to 'Delete item', task_path(task), method: :delete, data: { confirm: "You sure?" }  %>
-    </p>
-  <% end %>
-</div>
 
-<h3><%= link_to 'Create New Task', new_task_path %></h3>
+<ul id='tasks'>
+  <% @tasks.each do |task| %>
+      <% if task.completed %>
+        <i class="fa fa-check-square-o"></i>
+      <% else %>
+        <i class='fa fa-square-o'></i>
+      <% end %>
+      <%= link_to "#{task.title}", task_path(task) %>
+      .
+      <%= link_to task_path(task), method: :delete, data: { confirm: "You sure?" } do %>
+        <i class='fa fa-trash-o'></i>
+      <% end %>
+      <br>
+  <% end %>
+</ul>
+<br>
+
+<%= link_to new_task_path do %>
+  <i class='fa fa-plus'></i> Add a new task
+<% end %>
