@@ -1,6 +1,18 @@
-<p><%= @task.title %></p>
-<p><%= @task.details %></p>
-<p><%= @task.completed %></p>
+<%= link_to edit_task_path, class: 'pull-right btn btn-default' do %>
+  <i class="fa fa-pencil"></i> Edit this task
+<% end %>
 
-<p><%= link_to 'Edit task', edit_task_path %></p>
-<p><%= link_to 'Back to list', root_path %></p>
+<h1><%= @task.title %></h1>
+<p class='well'><%= @task.details %></p>
+
+<% if @task.completed %>
+  <i class="fa fa-check-square-o"></i> Task completed
+<% else %>
+  <i class='fa fa-square-o'></i> Task not completed
+<% end %>
+
+<hr>
+
+<%= link_to root_path do%>
+  <i class="fa fa-history"></i> Back to list
+<% end %>
