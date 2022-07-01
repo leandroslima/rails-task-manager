@@ -1,7 +1,9 @@
 <div class="mt-10">
 <h1>My Tasks</h1>
   <% @tasks.each do |task| %>
-    <p><%= link_to "#{task.title}, Completed: #{task.completed}", task_path(task) %></p>
+    <p><%= link_to "#{task.title}, Completed: #{task.completed}", task_path(task) %>
+      <%= link_to 'Delete item', task_path(task), method: :delete, data: { confirm: "You sure?" }  %>
+    </p>
   <% end %>
 </div>
 
